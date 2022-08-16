@@ -34,9 +34,10 @@
 				</div>
 
 				<div style="padding-top: 30px" class="panel-body">
-
+					
+					<!-- If we don't use the Spring MVC form:form tag, we have to manually handle CSRF token -->
 					<!-- Login Form -->
-					<form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST" class="form-horizontal">
+					<form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST" class="form-horizontal">
 
 					    <!-- Place for messages: error, alert etc ... -->
 					    <div class="form-group">
@@ -72,6 +73,9 @@
 							
 							<input type="password" name="password" placeholder="password" class="form-control" >
 						</div>
+						
+						<!-- Manually handling CSRF token -->
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 						<!-- Login/Submit Button -->
 						<div style="margin-top: 10px" class="form-group">						
@@ -80,7 +84,7 @@
 							</div>
 						</div>
 
-					</form:form>
+					</form>
 
 				</div>
 
